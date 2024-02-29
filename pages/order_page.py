@@ -1,5 +1,4 @@
 from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
 import allure
@@ -20,9 +19,10 @@ class OrderPage(BasePage):
         self.input_value_in_field(OrderPageLocators.FIELD_ADDRESS, address)
 
     @allure.step('Получение локатора нужного значения в поле "Станция метро"')
-    def metro_station_locator(self, new_station):
-        metro = (By.XPATH, './/*[text()="' + new_station + '"]')
-        return metro
+    def metro_station_locator(self, station_name):
+        method, locator = OrderPageLocators.BTN_METRO_STATION
+        locator = (method, locator.format(station_name))
+        return locator
 
     @allure.step('Шаг выбора значения в поле "Станция метро"')
     def chose_value_in_metro_field(self, new_station):
@@ -61,8 +61,9 @@ class OrderPage(BasePage):
 
     @allure.step('Получение локатора нужного значения в поле "Срок аренды"')
     def rent_period_locator(self, rent_period):
-        period = (By.XPATH, './/div[@class="Dropdown-menu"]/div[text()="' + rent_period + '"]')
-        return period
+        method, locator = OrderPageLocators.BTN_RENT_PERIOD
+        locator = (method, locator.format(rent_period))
+        return locator
 
     @allure.step('Клик в поле "Срок аренды"')
     def click_in_rent_period_field(self):

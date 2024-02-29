@@ -8,7 +8,7 @@ import allure
 
 class TestHeaderPage:
 
-    @allure.step('Тест перехода на главную страницу нажатием на логотип самоката')
+    @allure.title('Тест перехода на главную страницу нажатием на логотип самоката')
     def test_click_on_logo_samokat_redirect_to_main_page(self, driver):
         header_page = HeaderPage(driver)
         main_page = MainPage(driver)
@@ -18,7 +18,7 @@ class TestHeaderPage:
         header_page.click_on_logo_samokat()
         assert main_page.check_main_label_is_displayed()
 
-    @allure.step('Тест перехода на страницу Дзен нажатием на логотип яндекса')
+    @allure.title('Тест перехода на страницу Дзен нажатием на логотип яндекса')
     def test_click_on_logo_yandex_redirect_to_dzen_page(self, driver):
         header_page = HeaderPage(driver)
         main_page = MainPage(driver)
@@ -26,4 +26,4 @@ class TestHeaderPage:
         driver.get(TestData.MAIN_URL)
         main_page.click_on_cookie_agree()
         header_page.click_on_logo_yandex()
-        assert dzen_page.check_header_dzen_is_displayed(driver)
+        assert dzen_page.check_header_dzen_is_displayed()

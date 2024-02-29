@@ -1,6 +1,7 @@
 import time
 import pytest
-from locators.main_page_locators import MainPageLocators
+
+from data import TestData
 from pages.main_page import MainPage
 from conftest import driver
 import allure
@@ -21,8 +22,7 @@ class TestMainPage:
     ])
     def test_question_have_correct_answer(self, driver, num, answer_text):
         main_page = MainPage(driver)
-        driver.get('https://qa-scooter.praktikum-services.ru/')
+        driver.get(TestData.MAIN_URL)
         main_page.click_on_cookie_agree()
-        time.sleep(3)
-        result = main_page.click_on_question_and_get_answer(MainPageLocators.BTN_QUESTION, MainPageLocators.ANSWER, num)
+        result = main_page.click_on_question_and_get_answer(num)
         assert result == answer_text

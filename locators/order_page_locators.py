@@ -16,3 +16,5 @@ class OrderPageLocators:
     CHECKBOX_GRAY_COLOUR = By.XPATH, './/input[@id="gray"]'
     FIELD_COMMENT_COURIER = By.XPATH, './/input[@placeholder="Комментарий для курьера"]'
     LABEL_ORDER_PLACED = By.XPATH, './/*[text()="Заказ оформлен"]'
+    BTN_METRO_STATION = By.XPATH, './/*[text()="{}"]'
+    BTN_RENT_PERIOD = By.XPATH, './/div[@class="Dropdown-menu"]/div[text()="{}"]'
